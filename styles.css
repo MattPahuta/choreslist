@@ -1,0 +1,101 @@
+/* ----------------- */
+/* Custom Properties */
+/* ----------------- */
+:root {
+  /* 
+  *** Colors ***
+  WHITE: #FEFEFE
+  BLACK: #000000 ** update this black value
+  TEXT INPUT BACKGROUND: #EEEEEE
+  ADD BUTTON: #FFCC68
+  DELETE BUTTON: #FF9548
+  CHORE: #FBDF7C
+  */
+  --clr-white: #FEFEFE;
+  --clr-black: #000000;
+  --clr-light-gray: #EEEEEE;
+  --clr-yellow: #FFCC68;
+  --clr-light-yellow: #FBDF7C;
+  --clr-orange: #FF9548;
+  /*
+  *** Fonts ***
+    h1
+    font-family: 'Concert One', cursive;
+    body, buttons, lis, input placeholer
+    font-family: 'Inter', sans-serif;
+  */
+  --ff-heading: 'Concert One', cursive;
+  --ff-body: 'Inter', sans-serif;
+  /* font sizes */
+  --fs-body: 1.875rem;
+  --fs-heading: 4.375rem;
+}
+
+
+/* ======================== */
+/* Reset and General Styles */
+/* ======================== */
+html {
+  font-size: 100%;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure,
+picture {
+  margin: 0;
+}
+
+img,
+picture {
+  max-width: 100%;
+  min-height: 100%;
+}
+
+img {
+  display: block;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  font-family: var(--ff-body);
+  font-size: var(--fs-body);
+}
+
+.container {
+  max-width: 600px;
+  margin-inline: auto;
+}
+
+h1 {
+  font-family: var(--ff-heading);
+  font-size: var(--fs-heading);
+}
+
+button {
+  font-family: inherit;
+}
