@@ -17,6 +17,8 @@
   --clr-yellow: #FFCC68;
   --clr-light-yellow: #FBDF7C;
   --clr-orange: #FF9548;
+  --clr-orange-red: #ff4602;
+  --box-shadow: 0px 16px 30px -10px rgba(70, 96, 187, 0.19856);
   /*
   *** Fonts ***
     h1
@@ -77,25 +79,110 @@ select {
 
 body {
   margin: 0;
-  padding: 0;
+  padding: 0 1em;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 
   font-family: var(--ff-body);
   font-size: var(--fs-body);
+
+  background-image: linear-gradient(
+    45deg,
+    hsl(240deg 21% 36%) 0%,
+    hsl(240deg 18% 42%) 11%,
+    hsl(239deg 16% 47%) 22%,
+    hsl(239deg 17% 53%) 33%,
+    hsl(239deg 19% 59%) 44%,
+    hsl(238deg 23% 65%) 56%,
+    hsl(237deg 28% 71%) 67%,
+    hsl(237deg 36% 77%) 78%,
+    hsl(236deg 49% 83%) 89%,
+    hsl(236deg 81% 90%) 100%
+  );
 }
 
 .container {
-  max-width: 600px;
   margin-inline: auto;
+  text-align: center;
 }
+
 
 h1 {
   font-family: var(--ff-heading);
   font-size: var(--fs-heading);
 }
 
-button {
+.choreslist-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.chore-input {
+  padding: 0.25em;
+  border: none;
+  border-radius: 10px;
+  background: var(--clr-light-gray);
+}
+
+.chore-input::placeholder {
+  font-size: 1.5rem;
+}
+
+button.button {
+  padding: 0 .5em;
+  border: none;
+  border-radius: 10px;
+  background-color: transparent;
   font-family: inherit;
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button.add {
+  background-color: var(--clr-yellow);
+}
+
+button.delete-all {
+  background-color: var(--clr-orange);
+}
+
+button.button:focus,
+.chore-input:focus {
+  outline-color: var(--clr-orange-red);
+  outline-style: solid;
+  outline-width: 3px;
+}
+
+/* Chores list styles */
+.chores-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.chore {
+  padding: 0.5em 0;
+  background: var(--clr-light-yellow);
+  border-radius: 10px;
+}
+
+.chore:hover {
+  cursor: pointer;
+  box-shadow: var(--box-shadow);
 }

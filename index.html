@@ -11,16 +11,23 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="container">
-    <main>
-      <section class="choreslist">
+
+    <main class="container">
+      <section class="choreslist-section">
         <h1>Choreslist</h1>
-        <input type="text">
-        <button>-></button>
-        <button>✕</button>
+        <form action="">
+          <input id="chore-input" class="chore-input" type="text" placeholder="Add a chore...">
+          <button id="add" class="button add">-></button>
+          <button id="delete-all" class="button delete-all">✕</button>
+        </form>
+        <ul id="chores-list" class="chores-list">
+          <!-- added chores go here -->
+          <li class="chore">Do dishes</li>
+          <li class="chore">Clean kitchen</li>
+          <li class="chore">Do laundry</li>
+        </ul>
       </section>
     </main>
-  </div>
 
   
   <script src="app.js"></script>
