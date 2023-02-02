@@ -15,11 +15,12 @@
     <main class="container">
       <section class="choreslist-section">
         <h1>Choreslist</h1>
-        <form action="">
+        <form id="chore-form" class="chore-form" action="">
           <input id="chore-input" class="chore-input" type="text" placeholder="Add a chore...">
-          <button id="add" class="button add">-></button>
-          <button id="delete-all" class="button delete-all">✕</button>
+          <button id="add" class="button add" type="submit">-></button>
+          <button id="delete-all" class="button delete-all" type="button">✕</button>
         </form>
+
         <ul id="chores-list" class="chores-list">
           <!-- added chores go here -->
           <li class="chore">Do dishes</li>

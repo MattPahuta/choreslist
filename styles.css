@@ -119,7 +119,7 @@ h1 {
   gap: 1em;
 }
 
-form {
+.chore-form {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
