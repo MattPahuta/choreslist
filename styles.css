@@ -122,20 +122,20 @@ h1 {
 .chore-form {
   width: 100%;
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   gap: 12px;
 }
 
 .chore-input {
-  padding: 0.25em;
+  width: 100%;
+  padding: 0.5em 0.25em;
   border: none;
   border-radius: 10px;
   background: var(--clr-light-gray);
 }
 
 .chore-input::placeholder {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
 }
 
 button.button {
@@ -155,9 +155,19 @@ button.add {
   background-color: var(--clr-yellow);
 }
 
+button.add:hover {
+  color: green;
+}
+
+/* ToDo: add additional hover effect - grow? */
 button.delete-all {
   background-color: var(--clr-orange);
 }
+
+button.delete-all:hover {
+  color: red;
+}
+
 
 button.button:focus,
 .chore-input:focus {
