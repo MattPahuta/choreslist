@@ -1,4 +1,5 @@
 // Global variables
+const message = document.getElementById('message');
 const choreForm = document.getElementById('chore-form');
 const deleteAll = document.getElementById('delete-all');
 const choresList = document.getElementById('chores-list');
@@ -26,14 +27,17 @@ function addChore(e) {
   const chore = choreInput.value.toLowerCase(); // make everything lowerCase?
   // handle empty input value
   if (chore === '') {
-    alert('Add a chore') // replace alert with hidden error span?
+    showWarningMessage('Please add a chore.');
     return; // keep from creating a li
   }
   // handle duplicate chore input
-  if (!savedChores.includes(chore)){
-    storeChoreInLocalStorage(chore)
-    renderChores()
+  if (savedChores.includes(chore)){
+    showWarningMessage('No duplicate chores, please.');
+    choreInput.value = ''; // clear chore input
+    return;
   }
+  storeChoreInLocalStorage(chore)
+  renderChores()
   choreInput.value = ''; // clear chore input
 }
 
@@ -41,6 +45,16 @@ function addChore(e) {
 function storeChoreInLocalStorage(chore) {
   savedChores.push(chore)
   localStorage.setItem('chores', JSON.stringify(savedChores));
+}
+
+// show warning message
+function showWarningMessage(msg) {
+  message.style.display = 'block';
+  message.textContent = msg;
+  setTimeout(function() {
+    message.style.display = 'none'
+  }, 1500)
+
 }
 
 // delete a single chore
@@ -76,6 +90,13 @@ function renderChores() {
     choresHtml += `<li class="chore">${chore}</li>`
   }
   choresList.innerHTML = choresHtml;
+}
+
+// show random gif 
+function showRandomGif() {
+  const gifs = ['the-office.gif', 'the-office-2.gif', 'the-office-3.gif', 'the-office-4.gif', 'the-office-5.gif'];
+
+  
 }
 
 

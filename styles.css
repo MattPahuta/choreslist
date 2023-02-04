@@ -18,6 +18,7 @@
   --clr-light-yellow: #FBDF7C;
   --clr-orange: #FF9548;
   --clr-orange-red: #ff4602;
+  --clr-warning: #f24040;
   --box-shadow: 0px 16px 30px -10px rgba(70, 96, 187, 0.19856);
   /*
   *** Fonts ***
@@ -31,6 +32,7 @@
   /* font sizes */
   --fs-body: 1.875rem;
   --fs-heading: 4.375rem;
+  --fs-message: 1.5rem;
 }
 
 
@@ -104,6 +106,7 @@ body {
 
 .container {
   margin-inline: auto;
+  padding-top: 1em;
   text-align: center;
 }
 
@@ -111,15 +114,22 @@ body {
 h1 {
   font-family: var(--ff-heading);
   font-size: var(--fs-heading);
+  line-height: 1;
 }
 
-.choreslist-section {
-  display: flex;
-  flex-direction: column;
-  gap: 1em;
+.message-container {
+  min-height: 5vh;
+  padding: 0.25em 0;
+}
+
+.message {
+  font-size: var(--fs-message);
+  color: var(--clr-warning);
+  display: none;
 }
 
 .chore-form {
+  margin-bottom: 1em;
   width: 100%;
   display: flex;
   justify-content: center;
