@@ -2,31 +2,17 @@
 /* Custom Properties */
 /* ----------------- */
 :root {
-  /* 
-  *** Colors ***
-  WHITE: #FEFEFE
-  BLACK: #000000 ** update this black value
-  TEXT INPUT BACKGROUND: #EEEEEE
-  ADD BUTTON: #FFCC68
-  DELETE BUTTON: #FF9548
-  CHORE: #FBDF7C
-  */
+  /* Colors */
   --clr-white: #FEFEFE;
   --clr-black: #000000;
   --clr-light-gray: #EEEEEE;
   --clr-yellow: #FFCC68;
   --clr-light-yellow: #FBDF7C;
   --clr-orange: #FF9548;
-  --clr-orange-red: #ff4602;
+  --clr-purple: #a239d7;
   --clr-warning: #f24040;
-  --box-shadow: 0px 16px 30px -10px rgba(70, 96, 187, 0.19856);
-  /*
-  *** Fonts ***
-    h1
-    font-family: 'Concert One', cursive;
-    body, buttons, lis, input placeholer
-    font-family: 'Inter', sans-serif;
-  */
+  --box-shadow: 0px 20px 20px -10px rgba(201, 213, 225, 0.5);
+  /* fonts */
   --ff-heading: 'Concert One', cursive;
   --ff-body: 'Inter', sans-serif;
   /* font sizes */
@@ -34,7 +20,6 @@
   --fs-heading: 4.375rem;
   --fs-message: 1.5rem;
 }
-
 
 /* ======================== */
 /* Reset and General Styles */
@@ -85,21 +70,20 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-
   font-family: var(--ff-body);
   font-size: var(--fs-body);
 
   background-image: linear-gradient(
     45deg,
-    hsl(240deg 21% 36%) 0%,
-    hsl(240deg 18% 42%) 11%,
-    hsl(239deg 16% 47%) 22%,
-    hsl(239deg 17% 53%) 33%,
-    hsl(239deg 19% 59%) 44%,
-    hsl(238deg 23% 65%) 56%,
-    hsl(237deg 28% 71%) 67%,
-    hsl(237deg 36% 77%) 78%,
-    hsl(236deg 49% 83%) 89%,
+    hsl(240deg 25% 51%) 0%,
+    hsl(240deg 26% 55%) 11%,
+    hsl(239deg 28% 59%) 22%,
+    hsl(239deg 30% 63%) 33%,
+    hsl(239deg 33% 68%) 44%,
+    hsl(238deg 37% 72%) 56%,
+    hsl(237deg 41% 76%) 67%,
+    hsl(237deg 48% 81%) 78%,
+    hsl(236deg 60% 85%) 89%,
     hsl(236deg 81% 90%) 100%
   );
 }
@@ -110,13 +94,13 @@ body {
   text-align: center;
 }
 
-
 h1 {
   font-family: var(--ff-heading);
   font-size: var(--fs-heading);
   line-height: 1;
 }
 
+/* message container styles */
 .message-container {
   min-height: 5vh;
   padding: 0.25em 0;
@@ -128,6 +112,7 @@ h1 {
   display: none;
 }
 
+/* chore form styles */
 .chore-form {
   margin-bottom: 1em;
   width: 100%;
@@ -155,7 +140,6 @@ button.button {
   background-color: transparent;
   font-family: inherit;
   cursor: pointer;
-
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -169,7 +153,6 @@ button.add:hover {
   color: green;
 }
 
-/* ToDo: add additional hover effect - grow? */
 button.delete-all {
   background-color: var(--clr-orange);
 }
@@ -178,10 +161,9 @@ button.delete-all:hover {
   color: red;
 }
 
-
 button.button:focus,
 .chore-input:focus {
-  outline-color: var(--clr-orange-red);
+  outline-color: var(--clr-purple);
   outline-style: solid;
   outline-width: 3px;
 }
@@ -204,5 +186,23 @@ button.button:focus,
 
 .chore:hover {
   cursor: pointer;
+  color: var(--clr-warning);
   box-shadow: var(--box-shadow);
+}
+
+/* Success gif styles */
+.gif-container {
+  display: inline-flex;
+}
+
+.success-gif {
+  margin-inline: auto;
+  border: 5px solid var(--clr-orange);
+  border-radius: 5px;
+  object-fit: contain;
+  overflow: hidden;
+}
+
+.success-gif:hover {
+  cursor: pointer;
 }

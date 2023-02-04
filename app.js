@@ -3,6 +3,7 @@ const message = document.getElementById('message');
 const choreForm = document.getElementById('chore-form');
 const deleteAll = document.getElementById('delete-all');
 const choresList = document.getElementById('chores-list');
+const gifContainer = document.getElementById('gif-container');
 // savedChores - get for localStorage if it's there, otherwise it's an empty array
 const savedChores = JSON.parse(localStorage.getItem('chores')) || [];
 
@@ -18,13 +19,17 @@ function loadEventListeners() {
   choresList.addEventListener('click', deleteChore);
   // delete all chores from list
   deleteAll.addEventListener('click', deleteAllChores);
+  // close the success gif
+  gifContainer.addEventListener('click', () => {
+    gifContainer.innerHTML = '';
+  })
 }
 
 // add a chore
 function addChore(e) {
   e.preventDefault();
   const choreInput = document.getElementById('chore-input');
-  const chore = choreInput.value.toLowerCase(); // make everything lowerCase?
+  const chore = choreInput.value.toLowerCase(); // lowerCase for better dup detection
   // handle empty input value
   if (chore === '') {
     showWarningMessage('Please add a chore.');
@@ -36,25 +41,26 @@ function addChore(e) {
     choreInput.value = ''; // clear chore input
     return;
   }
-  storeChoreInLocalStorage(chore)
-  renderChores()
+  storeChoreInLocalStorage(chore) // call storeChoreInLocalStorage func, pass in chore
+  renderChores() // call renderChores
   choreInput.value = ''; // clear chore input
+  gifContainer.innerHTML = ''; // clear gif if needed
+  deleteAll.disabled = false; // enable the delete all chores button
 }
 
 // add chore to local storage
 function storeChoreInLocalStorage(chore) {
-  savedChores.push(chore)
-  localStorage.setItem('chores', JSON.stringify(savedChores));
+  savedChores.push(chore) // push chore to savedChores array
+  localStorage.setItem('chores', JSON.stringify(savedChores)); // set chores in LS
 }
 
 // show warning message
 function showWarningMessage(msg) {
-  message.style.display = 'block';
-  message.textContent = msg;
-  setTimeout(function() {
+  message.style.display = 'block'; // show the message
+  message.textContent = msg; // assign message content
+  setTimeout(function() { // clear message after 1.5 seconds
     message.style.display = 'none'
   }, 1500)
-
 }
 
 // delete a single chore
@@ -69,6 +75,9 @@ function deleteChore(e) {
   });
   choreLi.remove(); // remove the li element from the DOM
   localStorage.setItem('chores', JSON.stringify(savedChores)); // set updated chores in LS
+  if (savedChores.length === 0) {
+    showRandomGif(); // get a success gif if last chore is cleared
+  }
 }
 
 // delete all chores from list
@@ -79,15 +88,14 @@ function deleteAllChores() {
   }
   choresList.innerHTML = ``; // clear any elements in the choresList UL
   localStorage.setItem('chores', JSON.stringify(savedChores)); // set updated chores in LS
+  showRandomGif()
 }
 
 // render the chores from the chores array / localStorage
 function renderChores() {
-  console.log(JSON.parse(localStorage.getItem('chores'))) // debug
-
   let choresHtml = ''
-  for (let chore of savedChores) {
-    choresHtml += `<li class="chore">${chore}</li>`
+  for (let chore of savedChores) { // loop through savedChores
+    choresHtml += `<li class="chore">${chore}</li>` // add an li for each chore
   }
   choresList.innerHTML = choresHtml;
 }
@@ -95,8 +103,10 @@ function renderChores() {
 // show random gif 
 function showRandomGif() {
   const gifs = ['the-office.gif', 'the-office-2.gif', 'the-office-3.gif', 'the-office-4.gif', 'the-office-5.gif'];
-
-  
+  const randomGif = gifs[Math.floor(Math.random() * gifs.length)]; // get random gif/index
+  const successImgHtml = `
+    <img id="success-gif" class="success-gif" src="./img/${randomGif}" alt="A celebration gif from the office tv show">
+  `
+  gifContainer.innerHTML = successImgHtml;
+  deleteAll.disabled = true; // disable the delete-all-chores button
 }
-
-
