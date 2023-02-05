@@ -3,9 +3,12 @@ const message = document.getElementById('message');
 const choreForm = document.getElementById('chore-form');
 const deleteAll = document.getElementById('delete-all');
 const choresList = document.getElementById('chores-list');
-const gifContainer = document.getElementById('gif-container');
+const confirmBtns = document.getElementById('confirm-btns');
+
+const gifContainer = document.getElementById('success-container');
 // savedChores - get for localStorage if it's there, otherwise it's an empty array
 const savedChores = JSON.parse(localStorage.getItem('chores')) || [];
+let allChoresDone = false;
 
 // load all event listeners
 loadEventListeners();
@@ -19,6 +22,9 @@ function loadEventListeners() {
   choresList.addEventListener('click', deleteChore);
   // delete all chores from list
   deleteAll.addEventListener('click', deleteAllChores);
+
+  // confirmBtns.addEventListener('click', showCompletionConfirm)
+
   // close the success gif
   gifContainer.addEventListener('click', () => {
     gifContainer.innerHTML = '';
@@ -99,6 +105,16 @@ function renderChores() {
   }
   choresList.innerHTML = choresHtml;
 }
+
+// confirm all chores are complete
+function showCompletionConfirm(e) { // call this when all chores cleared
+  // let allChoresDone = false; 
+  console.log(e.target.id)
+
+}
+
+
+
 
 // show random gif 
 function showRandomGif() {

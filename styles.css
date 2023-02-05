@@ -133,8 +133,8 @@ h1 {
   font-size: 1.25rem;
 }
 
-button.button {
-  padding: 0 .5em;
+.button {
+  /* padding: 0 .5em; */
   border: none;
   border-radius: 10px;
   background-color: transparent;
@@ -143,6 +143,11 @@ button.button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+}
+
+.add,
+.delete-all {
+  padding: 0 .5em;
 }
 
 button.add {
@@ -191,9 +196,26 @@ button.button:focus,
 }
 
 /* Success gif styles */
-.gif-container {
+.success-container {
   display: inline-flex;
 }
+
+.confirm-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.confirm-btns {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+}
+
+.confirm-btn {
+  padding: .25em .75em;
+}
+
 
 .success-gif {
   margin-inline: auto;

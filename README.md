@@ -35,8 +35,8 @@ This is my solution to the Scrimba Choreslist (ToDo list) project, part of the S
 
 ### Links
 
-- [Scrimba solution URL]()
-- [live site URL]()
+- [Scrimba solution URL](https://scrimba.com/scrim/co9774bdb8012c88db66f65fd)
+- [live site URL](https://celadon-puffpuff-3dc6bb.netlify.app/)
 
 ## My process
 
