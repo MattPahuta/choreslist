@@ -3,9 +3,7 @@ const message = document.getElementById('message');
 const choreForm = document.getElementById('chore-form');
 const deleteAll = document.getElementById('delete-all');
 const choresList = document.getElementById('chores-list');
-const confirmBtns = document.getElementById('confirm-btns');
-
-const gifContainer = document.getElementById('success-container');
+const gifContainer = document.getElementById('gif-container');
 // savedChores - get for localStorage if it's there, otherwise it's an empty array
 const savedChores = JSON.parse(localStorage.getItem('chores')) || [];
 let allChoresDone = false;
@@ -15,16 +13,13 @@ loadEventListeners();
 
 function loadEventListeners() {
   // DOM is loaded, get render savedChores from LS
-  document.addEventListener('DOMContentLoaded', renderChores);
+  document.addEventListener('load', renderChores); // *** preference to use 'load' here - waits for everything, not jut DOM content
   // add a chore - form/button submit
   choreForm.addEventListener('submit', addChore);
   // delete a single chore
   choresList.addEventListener('click', deleteChore);
   // delete all chores from list
   deleteAll.addEventListener('click', deleteAllChores);
-
-  // confirmBtns.addEventListener('click', showCompletionConfirm)
-
   // close the success gif
   gifContainer.addEventListener('click', () => {
     gifContainer.innerHTML = '';
@@ -35,9 +30,9 @@ function loadEventListeners() {
 function addChore(e) {
   e.preventDefault();
   const choreInput = document.getElementById('chore-input');
-  const chore = choreInput.value.toLowerCase(); // lowerCase for better dup detection
+  const chore = choreInput.value.toLowerCase().trim(); // lowerCase for better dup detection, trim() to account for just spaces in input
   // handle empty input value
-  if (chore === '') {
+  if (!chore) { // check if this is 
     showWarningMessage('Please add a chore.');
     return; // keep from creating a li
   }
@@ -106,19 +101,9 @@ function renderChores() {
   choresList.innerHTML = choresHtml;
 }
 
-// confirm all chores are complete
-function showCompletionConfirm(e) { // call this when all chores cleared
-  // let allChoresDone = false; 
-  console.log(e.target.id)
-
-}
-
-
-
-
 // show random gif 
 function showRandomGif() {
-  const gifs = ['the-office.gif', 'the-office-2.gif', 'the-office-3.gif', 'the-office-4.gif', 'the-office-5.gif'];
+  const gifs = ['the-office-1.gif', 'the-office-2.gif', 'the-office-3.gif', 'the-office-4.gif', 'the-office-5.gif'];
   const randomGif = gifs[Math.floor(Math.random() * gifs.length)]; // get random gif/index
   const successImgHtml = `
     <img id="success-gif" class="success-gif" src="./img/${randomGif}" alt="A celebration gif from the office tv show">
