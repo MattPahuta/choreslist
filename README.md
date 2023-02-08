@@ -6,7 +6,7 @@ This is my solution to the Scrimba Choreslist (ToDo list) project, part of the S
 
 - [Overview](#overview)
   - [Requirements](#requirements)
-  - [Strech goals](#stretch-goals)
+  - [Stretch goals](#stretch-goals)
   - [Screenshot](#screenshot)
   - [Links](#links)
 - [My Process](#my-process)
@@ -22,7 +22,7 @@ This is my solution to the Scrimba Choreslist (ToDo list) project, part of the S
 - Prevent empty chore from being added
 - Use localStorage to allow for chore persistance
 
-### Strech goals
+### Stretch goals
 
 - Prevent adding duplicate chore
 - Click individual chore to remove from list
